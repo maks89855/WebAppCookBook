@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using WebAppCookBook.API.DTOModels;
-using WebAppCookBook.Models;
 
 namespace WebAppCookBook.Frontend.Models
 {

@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
-using WebAppCookBook.API.Models;
-using WebAppCookBook.API.Service;
+﻿using WebAppCookBook.API.Models;
 
 namespace WebAppCookBook.Frontend.Models
 {

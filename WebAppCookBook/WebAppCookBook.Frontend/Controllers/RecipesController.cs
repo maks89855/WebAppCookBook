@@ -2,12 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
-using System.Text.Json;
-using WebAppCookBook.Models;
-using WebAppCookBook.API.DTOModels;
-using WebAppCookBook.DTOModels;
 using WebAppCookBook.Frontend.Models;
-using WebAppCookBook.Models;
 
 namespace WebAppCookBook.Frontend.Controllers
 {
