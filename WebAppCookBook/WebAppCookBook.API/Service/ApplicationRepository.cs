@@ -192,17 +192,17 @@ namespace WebAppCookBook.Service
 
         public void UpdateCategoryAsync(Category category)
         {
-            
+            throw new NotImplementedException();
         }
 
 		public void UpdateIngredientAsync(Ingredient Ingredient)
 		{
-			
-		}
+            throw new NotImplementedException();
+        }
 
 		public void UpdateRecipeAsync(Recipe recipe)
         {
-            
+            throw new NotImplementedException();
         }
 
         public void UpdateStepAsync(StepCook step)
