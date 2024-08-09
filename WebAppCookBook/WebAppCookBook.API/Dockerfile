@@ -9,17 +9,17 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["WebAppCookBook/WebAppCookBook.csproj", "WebAppCookBook/"]
-RUN dotnet restore "./WebAppCookBook/WebAppCookBook.csproj"
+COPY ["WebAppCookBook.API/WebAppCookBook.API.csproj", "WebAppCookBook.API/"]
+RUN dotnet restore "./WebAppCookBook.API/WebAppCookBook.API.csproj"
 COPY . .
-WORKDIR "/src/WebAppCookBook"
-RUN dotnet build "./WebAppCookBook.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/WebAppCookBook.API"
+RUN dotnet build "./WebAppCookBook.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./WebAppCookBook.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./WebAppCookBook.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "WebAppCookBook.dll"]
+ENTRYPOINT ["dotnet", "WebAppCookBook.API.dll"]
