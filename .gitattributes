@@ -1,4 +1,4 @@
-../WebAppCookBook.Frontend/wwwroot/* linguist-vendored
+*.scss linguist-language=C#
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
