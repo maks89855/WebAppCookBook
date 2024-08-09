@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using WebAppCookBook.Frontend.Models;
 
 namespace WebAppCookBook.Frontend.Controllers
 {
@@ -17,12 +18,24 @@ namespace WebAppCookBook.Frontend.Controllers
 		[HttpGet]
         public IActionResult Index()
 		{
-			List<Category> categories = new List<Category>();
+			List<CategoryViewModel> categories = new List<CategoryViewModel>();
 			HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "/categories").Result;
 			if (response.IsSuccessStatusCode)
 			{
 				string data = response.Content.ReadAsStringAsync().Result;
-				categories = JsonConvert.DeserializeObject<List<Category>>(data);
+				categories = JsonConvert.DeserializeObject<List<CategoryViewModel>>(data);
+			}
+			return PartialView(categories);
+		}
+		[HttpGet]
+		public IActionResult GetCategory(int categoryId)
+		{
+			List<CategoryViewModel> categories = new List<CategoryViewModel>();
+			HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "/categories/"+categoryId).Result;
+			if (response.IsSuccessStatusCode)
+			{
+				string data = response.Content.ReadAsStringAsync().Result;
+				categories = JsonConvert.DeserializeObject<List<CategoryViewModel>>(data);
 			}
 			return View(categories);
 		}
