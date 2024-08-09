@@ -1,0 +1,73 @@
+﻿@page
+@model IEnumerable<WebAppCookBook.Frontend.Models.CategoryViewModel>
+@{
+	<!DOCTYPE html>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	<html>
+	<head>
+		<title>Test</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-3" style="background-color:antiquewhite">
+					<div>
+						<p>Категории</p>
+					</div>
+					<div>
+						<ul class="list-group text-center">		
+							@foreach(var item in Model)
+							{
+								<li class="list-group-item active">
+									@item.NameCategory
+								</li>
+							}
+	
+						</ul>
+					</div>
+				</div>
+				<div class="col-9 text-center">
+					<p>Рецепт</p>
+					<!--<div class="container text-center">
+						<div class="row">
+							<p>����������</p>
+							<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+								<div class="btn-group me-2" role="group" aria-label="First group">
+									<button type="button" class="btn btn-primary">1</button>
+								</div>
+								<div class="btn-group me-2" role="group" aria-label="Second group">
+								</div>
+								<div class="btn-group" role="group" aria-label="Third group">
+									<button type="button" class="btn btn-info">8</button>
+								</div>
+							</div>
+						</div>
+					</div>-->
+					<div class="container text-center">
+						<div class="row">
+							<h1>Название</h1>
+						</div>
+						<div class="row">
+							<img style="width:300px; height:300px;" class="img-thumbnail rounded mx-auto d-block " src="https://www.eatingwell.com/thmb/WfLcIPyHK6yrl8lohvlLCvTKi_o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/RM_Creamy_Chicken_Mushroom_and_Spinach_Skillet_Casserole_1x1_4755-eeaf608727dc4b02b7e7098345882089.jpg" />
+						</div>
+						<div class="row">
+							<div class="mb-3">
+								<label for="exampleFormControlTextarea1" class="form-label">Описание</label>
+								<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="mb-3">
+								<label for="exampleFormControlTextarea1" class="form-label">Способ приготовления</label>
+								<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+	</body>
+	</html>
+}

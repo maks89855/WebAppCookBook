@@ -1,22 +1,13 @@
 {
   "profiles": {
-    "http": {
+    "WebAppCookBook.Frontend": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5090"
-    },
-    "https": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7103;http://localhost:5090"
+      "applicationUrl": "https://localhost:7190;http://localhost:5280"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -37,13 +28,12 @@
       "useSSL": true
     }
   },
-  "$schema": "http://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:18794",
-      "sslPort": 44356
+      "applicationUrl": "http://localhost:20998",
+      "sslPort": 44309
     }
   }
 }
