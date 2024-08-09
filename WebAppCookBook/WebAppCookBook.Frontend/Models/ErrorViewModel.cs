@@ -1,4 +1,4 @@
-namespace WebAppCookBook.Models
+namespace WebAppCookBook.Frontend.Models
 {
 	public class ErrorViewModel
 	{
