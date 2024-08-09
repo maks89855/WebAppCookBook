@@ -1,0 +1,82 @@
+﻿@model WebAppCookBook.Frontend.Models.RecipeViewModel
+
+@{
+    ViewData["Title"] = "EditRecipe";
+}
+
+<h1>EditRecipe</h1>
+
+<h4>UpdateRecipeViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditRecipe" method="post">
+            <input asp-for="Id" type="hidden"/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" value="@Model.Name"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group input-group mb-3">
+                <img class="rounded figure-img" src="https://localhost:7027/images/@Model.Id/@Model.Image"/>
+                <label class="input-group-text" for="inputGroupFile01">Upload</label>
+                <input asp-for="Image" type="file" class="form-control" id="inputGroupFile01">
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" value="@Model.Description"/>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <table class="table table-hover">
+                <tbody>
+                    @foreach (var item in Model.Ingredients!)
+                    {
+                        <tr>
+                            <td>
+                                @item.NameIngredient
+                            </td>
+                            <td>
+                                <span>
+                                    <span>
+                                        @item.Count
+                                    </span>
+                                    <span>
+                                        @item.Units
+                                    </span>
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-success">
+                                Добавить ингредиент
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            @foreach(var item in Model.StepsCooking)
+            {
+                <div class="row align-items-center">
+                    <div class="row">
+                        <div class="h5"> ШАГ @item.NumberStep</div>
+                        <textarea>@item.Discription</textarea>
+                    </div>
+                </div>
+            }
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,10 @@
+﻿@model IEnumerable<WebAppCookBook.Frontend.Models.CategoryViewModel>
+
+
+<select id="categories" name="categories">
+    @foreach (var category in Model)
+    {
+        <option>@category.NameCategory</option>
+        <span>@category.Id</span>
+    }
+</select>

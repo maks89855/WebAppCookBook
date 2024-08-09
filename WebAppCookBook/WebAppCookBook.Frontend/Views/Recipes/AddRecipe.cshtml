@@ -1,0 +1,114 @@
+﻿@model WebAppCookBook.Frontend.Models.CreateRecipeModel
+
+@{
+    ViewData["Title"] = "AddRecipe";
+}
+
+<h1>AddRecipe</h1>
+
+<h4>CreateRecipeModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddRecipe" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label name="categoryId" class="control-label"></label>
+                <input name="categoryId" class="form-control" />              
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Upload</label>
+                <input asp-for="Image" type="file" class="form-control" id="inputGroupFile01">
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <table id="tbemployee">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Count</td>
+                        <td>Units</td>
+                    </tr>
+                </thead>
+                <tbody class="table" id="tbbody">
+                    @if (Model == null || Model.Ingredients == null || Model.Ingredients.Count == 0)
+                    {
+                        <tr>
+                            <td>
+                                <input class="form-control" id="name" name="Ingredients[0].NameIngredient" />
+                            </td>
+                            <td>
+                                <input class="form-control" id="age" name="Ingredients[0].Count" />
+                            </td>
+                            <td>
+                                <input class="form-control" id="age" name="Ingredients[0].Units" />
+                            </td>
+                            <td><input type="button" class="btnremove" value="remove" /></td>
+                        </tr>
+                    }
+                    else if (Model.Ingredients != null && Model.Ingredients.Count > 0)
+                    {
+                        @for (var i = 0; i < Model.Ingredients.Count; i++)
+                        {
+
+                            <tr>
+                                <td>
+                                    <input class="form-control" asp-for="@Model.Ingredients[@i].NameIngredient" />
+                                </td>
+                                <td>
+                                    <input class="form-control" asp-for="@Model.Ingredients[@i].Count" />
+                                </td>
+                                <td>
+                                    <input class="form-control" asp-for="@Model.Ingredients[@i].Units" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2"><input type="button" id="btnAddNew" value="Add New" class="btn btn-primary" /></td>                       
+                    </tr>
+
+                </tfoot>
+            </table>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(function () {
+            $("#btnAddNew").click(function () {
+                var count = $("#tbbody>tr").length;
+                $("#tbbody").append("<tr><td><input class='form-control' id = 'NameIngredient' name = 'Ingredients[" + count + "].NameIngredient'/></td><td><input class= 'form-control' id = 'Count' name = 'Ingredients[" + count + "].Count'/></td><td><input class='form-control' id = 'Units' name = 'Ingredients[" + count + "].Units'/></td><td> <input type='button' class= 'btnremove' value = 'remove'/></td></tr>");
+                AddRemoveAction();
+            });
+            function AddRemoveAction() {
+                $(".btnremove").each(function (index, item) {
+                    $(item).click(function () {
+                        $(this).closest('tr').remove();
+                    });
+
+                })
+            }
+        });
+    </script>
+}

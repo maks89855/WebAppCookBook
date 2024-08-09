@@ -1,0 +1,86 @@
+﻿@model WebAppCookBook.Frontend.Models.RecipeViewModel
+
+
+@* <div class="container text-center">
+    <div class="row align-items-center g-2">
+        <div class="col-sm">
+            @Model.Name
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col align-self-center">
+            <ul class="list-group list-group-flush">
+                @foreach (var item in Model.Ingredients!)
+                {
+                    <li class="list-group-item">
+                        @item.NameIngredient
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-sm">
+            <div>
+                <input />
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+</div> *@
+<div class="container text-center">
+	<div class="row align-items-center g-2 p-2">
+		<div class="col-sm display-3">
+			@Model.Name
+		</div>
+	</div>
+	<div class="row align-items-center">
+		<div class="col-sm">
+			<img class="rounded figure-img" src="https://localhost:7027/images/@Model.Id/@Model.Image" />
+		</div>
+	</div>
+	<div class="row align-items-center">
+		<div class="col">
+			<a asp-controller="Recipes" asp-action="EditRecipe" asp-route-recipeId="@Model.Id" class="btn btn-secondary">Редактирование</a>
+		</div>
+	</div>
+	<div class="row align-items-center">
+		<div class="col-4 offset-4 align-self-center">
+			<table class="table table-hover">
+				<tbody>
+					@foreach(var item in Model.Ingredients!)
+					{
+						<tr>
+							<td>
+								@item.NameIngredient
+							</td>
+							<td>
+								<span>
+									<span>
+										@item.Count
+									</span>
+									<span>
+										@item.Units
+									</span>
+								</span>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	@foreach(var item in Model.StepsCooking)
+	{
+		<div class="row align-items-center">
+			<div class="row">
+				<div class="h5"> ШАГ @item.NumberStep</div>
+				<div>@item.Discription</div>
+			</div>
+		</div>
+	}
+
+
+</div>
